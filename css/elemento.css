@@ -54,9 +54,12 @@ table {
 
 @media all and (max-width: 560px) {
     .container {
-        overflow-x: auto;
         margin: 1rem;
         width: calc(100% - 2rem);
+    }
+
+    .container > div{
+        overflow-x: auto;
     }
 
     th, td {
