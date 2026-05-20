@@ -4,7 +4,7 @@ Exercícios e projetos desenvolvidos durante ADS na UNINTER.
 
 ## Disciplina
 Ferramentas de Desenvolvimento Web - 2026  
-**Professora:** Margarete Klamas Marzani
+**Professora:** [Margarete Klamas Marzani](https://github.com/margaretkl)
 
 ## Tecnologias
 - HTML5
