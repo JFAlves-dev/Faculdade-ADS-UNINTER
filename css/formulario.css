@@ -1,0 +1,329 @@
+/* 
+    ===== VARIÁVEIS CSS (RAIZ) =====
+    Define cores, espaçamentos, fonts uma vez só
+    Fácil de mudar depois (type: darkmode)
+    Acessa com var(--nome-variavel)
+*/
+:root {
+    --cor-primaria: #007bff;
+    --cor-sucesso: #28a745;
+    --cor-perigo: #dc3545;
+    --cor-aviso: #ffc107;
+    --cor-fundo: #f8f9fa;
+    --cor-borda: #dee2e6;
+    --cor-texto: #333;
+    --cor-texto-claro: #666;
+
+    --espaco-xs: 5px;
+    --espaco-sm: 10px;
+    --espaco-md: 15px;
+    --espaco-lg: 20px;
+    --espaco-xl: 30px;
+
+    --raio-borda: 4px;
+    --sombra: 0 2px 4px rgba(0, 0, 0, 0.10);
+}
+/* 
+    ===== RESET E ESTILOS GLOBAIS =====
+    Remove estilos padrão do navegador
+    Define fontes base
+*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    line-height: 1.6;
+}
+
+/* 
+    ===== CONTAINER =====
+    Centraliza o form, deixa responsivo
+    max-width: não fica muito largo em telas grandes
+    padding: espaço interno pra não ficar grudado na borda
+    margin: auto centraliza horizontalmente
+*/
+.container {
+    max-width: 600px;
+    margin: var(--espaco-xl) auto;
+    padding: var(--espaco-lg);
+    background-color: white;
+    border-radius: var(--raio-borda);
+    box-shadow: var(--sombra);
+}
+
+/* ===== TÍTULO ===== */
+h1 {
+    text-align: center;
+    margin-bottom: var(--espaco-xl);
+    color: var(--cor-primaria);
+    font-size: 2em;
+}
+
+/* 
+    ===== FIELDSET E LEGEND =====
+    fieldset: agrupa campos relacionados com borda
+    legend: título do grupo
+*/
+fieldset {
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    padding: var(--espaco-lg);
+    margin-bottom: var(--espaco-lg);
+}
+
+/* Legend fica fora da borda (efeito "flutuante") */
+legend {
+    padding: 0 var(--espaco-sm);
+    font-weight: bold;
+    color: var(--cor-primaria);
+    font-size: 1.1em;
+}
+
+/* 
+    ===== FORM-GROUP =====
+    Agrupa label + input + erro
+    Cada campo fica com espaçamento consistente
+*/
+.form-group {
+    margin-bottom: var(--espaco-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Label sempre em cima do input */
+label {
+    font-weight: 600;
+    margin-bottom: var(--espaco-xs);
+    color: var(--cor-texto);
+    font-size: 0.95em;
+}
+
+/* 
+    ===== INPUT, SELECT, TEXTAREA =====
+    Estilos consistentes pra todos os campos
+    width: 100% pra ocupar todo espaço (responsivo)
+    padding: espaço interno
+    border: borda cinza clara
+    border-radius: cantos arredondados
+*/
+input,
+select,
+textarea {
+    padding: var(--espaco-sm) var(--espaco-md);
+    border: 1px solid var(--cor-borda);
+    border-radius: var(--raio-borda);
+    font-family: inherit;
+    font-size: 1em;
+    transition: all 0.3s ease;
+}
+
+/* 
+    ===== FOCUS (quando clica) =====
+    Borda azul + sombra = feedback visual
+    Remove o outline padrão (feio)
+*/
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rba(0, 123, 255, 0.25);
+}
+
+/* 
+    ===== ESTADOS DE VALIDAÇÃO =====
+    data-invalid: marca campos com erro (setado pelo JS)
+*/
+input[data-invalid="true"],
+select[data-invalid="true"] {
+    border-color: var(--cor-perigo);
+}
+
+input[data-invalid="true"]:focus,
+select[data-invalid="true"]:focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25);
+}
+
+/* ===== MENSAGEM DE ERRO ===== */
+.error-message {
+    color: var(--cor-perigo);
+    font-size: 0.85em;
+    margin-top: var(--espaco-xs);
+    display: none; /* Fica hidden até ter erro */
+}
+
+/* Mostra quando tem erro (JS adiciona class .show) */
+.error-message.show {
+    display: block;
+}
+
+/* 
+    ===== FORM-ROW (MÚLTIPLOS INPUTS NA MESMA LINHA) =====
+    Flexbox: distribui espaço igualmente
+    gap: espaço entre itens
+    flex-wrap: quebra em telas pequenas (responsivo)
+*/
+.form-row {
+    display: flex;
+    gap: var(--espaco-lg);
+    flex-wrap: wrap;
+}
+
+/* Cada form-group em uma row pega 50% do espaço */
+.form-row .form-group {
+    flex: 1;
+    min-width: 250px;
+}
+
+.form-row .form-group:has(#endereco),
+.form-row .form-group:has(#numero){
+    min-width: 0;
+}
+
+/* 
+    ===== RADIO E CHECKBOX =====
+    radio-group e checkbox-group: flexbox horizontal
+    Labels ao lado do input (não em cima)
+*/
+.radio-group,
+.checkbox-group {
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: var(--espaco-md);
+}
+
+.radio-group input,
+.checkbox-group input {
+    margin-right: var(--espaco-md);
+    width: auto;
+    cursor: pointer; /* Vira mãozinha = "clica aqui que faz algo" */
+    accent-color: var(--cor-primaria); /* Cor do check/radio */
+}
+
+.radio-group label,
+.checkbox-group label {
+    margin-bottom: 0;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+/* 
+    ===== BUTTONS (BOTÕES) =====
+    display: flex pra múltiplos botões lado a lado
+    gap: espaço entre eles
+*/
+.form-buttons {
+    display: flex;
+    gap: var(--espaco-md);
+    margin-top: var(--espaco-xl);
+    justify-content: center;
+}
+
+.btn {
+    padding: var(--espaco-md) var(--espaco-xl);
+    border: none;
+    border-radius: var(--raio-borda);
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* ===== BOTÃO PRIMÁRIO (ENVIAR) ===== */
+.btn-primary {
+    background-color: var(--cor-primaria);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Azul fica mais escuro no hover */
+    transform: translateY(-2px);/* Sobe um pouco no hover */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3); /* Sombra azulada embaixo */
+}
+
+.btn-primary:active {
+    transform: translateY(0); /* Volta pro lugar quando clica */
+}
+
+/* ===== BOTÃO SECUNDÁRIO (LIMPAR) ===== */
+.btn-secondary {
+    background-color: var(--cor-borda);
+    color: var(--cor-texto);
+}
+
+.btn-secondary:hover {
+    background-color: #ccc;
+    transform: translateY(-2px);
+}
+
+/* 
+    ===== RESPONSIVIDADE (MOBILE) =====
+    Em telas pequenas (< 600px):
+    - Reduz padding
+    - Botões ocupam 100% da largura
+    - Form-row volta pra coluna
+*/
+@media (max-width: 600px) {
+    .container {
+        padding: var(--espaco-md);
+        margin: var(--espaco-md);
+    }
+
+    h1 {
+        font-size: 1.5em;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: var(--espaco-md)
+    }
+
+    .form-group {
+        min-width: 100%;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+/* Aviso ocupa a tela toda */
+.aviso-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.aviso-box {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+}
+
+.aviso-box h2 {
+    margin-top: 0;
+    color: #d9534f;
+}
+
+/* Form começa escondido */
+#formContainer {
+    display: none;
+}

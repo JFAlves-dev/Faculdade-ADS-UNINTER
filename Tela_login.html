@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de login</title>
+    <style>
+        :root {
+            --cor-primaria: #274DEA;
+            --cor-fundo: #889FF2;
+            --cor-texto: #202D59;
+            --cor-borda: #D6DFFF;
+
+            --raio-borda: 4px;
+            --sombra: 0 2px 4px rgba(0, 0, 0, 0.15);
+            --espaco-xs: 6px;
+            --espaco-sm: 12px;
+            --espaco-md: 16px;
+            --espaco-lg: 22px;
+            --espaco-xl: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: var(--espaco-xl) auto;
+            padding: var(--espaco-lg);
+            background-color: white;
+            border-radius: var(--raio-borda);
+            box-shadow: var(--sombra);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: var(--espaco-xl);
+            color: var(--cor-primaria);
+            font-size: 2.5em;
+        }
+
+        fieldset {
+            border: 1px solid var(--cor-borda);
+            border-radius: var(--raio-borda);
+            padding: var(--espaco-lg);
+            margin-bottom: var(--espaco-lg);
+        }
+
+        legend {
+            padding: 0 var(--espaco-sm);
+            font-weight: bold;
+            color: var(--cor-primaria);
+            font-size: 1.5em;
+        }
+
+        .form-group {
+            margin-bottom: var(--espaco-lg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 650;
+            margin-bottom: var(--espaco-xs);
+            color: var(--cor-texto);
+            font-size: 1em;
+        }
+
+        input {
+            padding: var(--espaco-sm) var(--espaco-md);
+            border: 2px solid var(--cor-borda);
+            border-radius: var(--raio-borda);
+            font-family: Times;
+            font-size: 1em;
+            transition: all 0.4s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--cor-primaria);
+            box-shadow: 0 0 0 4px rgba(0,124, 244, 0.26)
+        }
+
+        .form-buttons {
+            display: flex;
+            gap: var(--espaco-md);
+            margin-top: var(--espaco-xl);
+            justify-content: center;
+        }
+
+        .btn {
+            padding: var(--espaco-md) var(--espaco-xl);
+            border: none;
+            border-radius: var(--raio-borda);
+            font-size: 1em;
+            font-weight: 650;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--cor-primaria);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #16308C;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 124, 244, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary:hover {
+            background-color: #D6DFFF;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: var(--espaco-md);
+                margin: var(--espaco-md);
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .form-group {
+                min-width: 100%;
+            }
+
+            .form-buttons{
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action method="post" novalidate>
+        <h2>Login</h2>
+        <fieldset>
+            <legend>Dados para login do usuário.</legend>
+            <div class="form-group">
+                <label for="nome">Nome do usuário:</label>
+            <input type="text" id="nome" name="NomeUsuario" maxlength="20" placeholder="Digite seu usuário">
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="SenhaAcesso" maxlength="10" placeholder="Digite sua senha.">
+            </div>    
+        </fieldset>
+        <div class="form-buttons">
+            <button class="btn btn-primary" type="submit">Enviar</button>
+            <button class="btn btn-secondary" type="reset">Limpar</button>
+        </div>        
+    </form>
+    </div>
+    
+</body>
+</html>

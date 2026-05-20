@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex de Formulário</title>
+    <link rel="stylesheet" href="css/formulario.css">
+</head>
+<body>
+    <!-- ===== TELA DE AVISO ===== -->
+    <div id="telaAviso" class="aviso-overlay">
+        <div class="aviso-box">
+            <h2>⚠ Aviso Importante</h2>
+            <p>Esta é uma página de teste.</p>
+            <p>Nenhum dado é armazenado neste site!</p>
+            <p>Não use informações reais como CPF ou RG</p>
+            <button id="btnEntendi" class="btn btn-primary">Entendi, continuar</button>
+        </div>
+    </div>
+    <div class="container" id="formContainer" style="display: none;">
+        <h1>Formulário de Cadastro</h1>
+        <!-- 
+            Form com:
+            - action vazio (processa na mesma página ou via JS)
+            - method POST (seguro pro envio de dados)
+            - novalidate: deixa a gente controlar a validação com JS
+            - id pra acessar via JavaScript facilmente
+        -->
+        <form id="formCadastro" action="" method="POST" novalidate>
+
+            <!-- ===== SEÇÃO 1: IDENTIFICAÇÃO ===== -->
+            <fieldset>
+            <legend>Identificação</legend>
+            <!-- 
+                    .form-group: agrupa label + input
+                    name e id ALINHADOS (muito importante!)
+                    required: validação HTML5 básica
+                    data-validate: custom pra nossa validação JS
+                -->
+            <div class="form-group">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Digite o nome completo" maxlength="50" required data-validate="nome">
+                <!-- Div pra mensagem de erro (vazio, preenchido pelo JS) -->
+                 <span class="error-message" id="erro-nome"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="rg">RG: </label>
+                <!-- data-validate: tipo de validação a aplicar (cpf, email, etc) -->
+                <input type="text" id="rg" name="rg" placeholder="Digite o número do RG"  maxlength="15" data-validate="rg">
+                <span class="error-message" id="erro-rg"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="cpf">CPF: </label>
+                <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00"  maxlength="14" data-validate="cpf">
+                <span class="error-message" id="erro-cpf"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="dataNascimento">Data de nascimento: </label>
+                <input type="date" id="dataNascimento" name="dataNascimento" data-validate="data">
+                <span class="error-message" id="erro-dataNascimento"></span>
+            </div>
+        </fieldset>
+
+        <!-- ===== SEÇÃO 2: ENDEREÇO ===== -->
+        <fieldset>
+            <legend>Endereço</legend>
+            <!-- 
+                    .form-row: coloca múltiplos inputs na mesma linha
+                    Logradouro e Número lado a lado
+                -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="endereco">Logradouro:</label>
+                    <input type="text" id="endereco" name="endereco" placeholder="Digite o nome do logradouro" data-validate="endereco">
+                    <span class="error-message" id="erro-endereco"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="numero">Número:</label>
+                    <input type="text" id="numero" name="numero" placeholder="Nº" maxlength="10" data-validate="numero">
+                    <span class="error-message" id="erro-numero"></span>
+                </div>
+                </div>    
+
+                <div class="form-group">
+                    <label for="bairro">Bairro:</label>
+                    <input type="text" id="bairro" name="bairro" placeholder="Digite o nome do bairro" maxlength="40" data-validate="bairro">
+                    <span class="error-message" id="erro-bairro"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado:</label>
+                    <select id="estado" name="estado" data-validate="estado">
+                        <option value="">Selecione um estado</option>
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="PR">Paraná</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                    <span class="error-message" id="erro-estado"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="cep">CEP:</label>
+                    <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" data-validate="cep">
+                    <span class="error-message" id="erro-cep"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefone">Telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" placeholder="(00) 9 0000-0000" maxlength="15" data-validate="telefone">
+                    <span class="error-message" id="erro-telefone"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" maxlength="80" required data-validate="email">
+                    <span class="error-message" id="erro-email"></span>
+                </div>
+        </fieldset>
+
+        <!-- ===== SEÇÃO 3: PREFERÊNCIAS ===== -->
+        <fieldset>
+            <legend>Sexo</legend>
+            <!-- 
+                    Fieldset só pra agrupar relacionados
+                    Todos com mesmo name (importante!)
+                -->
+            <div class="form-group radio-group">
+                <!-- Radio = questão de marcar X na prova. Só uma opção. name igual = grupo único -->
+                <input type="radio" id="sexo-m" name="sexo" value="M">
+                <label for="sexo-m">Masculino</label>
+            </div>
+            <div class="form-group radio-group">
+                <input type="radio" id="sexo-f" name="sexo" value="F">
+                <label for="sexo-f">Feminino</label>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Interesses</legend>
+            <!-- 
+                    Checkboxes: cada um pode ter um ID/name único
+                    Quando enviar, só manda os checados
+                -->
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="cg" name="interesses" value="CG">
+                <label for="cg">Computação gráfica</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="lp" name="interesses" value="LP">
+                <label for="lp">Linguagem de programação</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="bd" name="interesses" value="BD">
+                <label for="bd">Banco de dados</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="rc" name="interesses" value="RC">
+                <label for="rc">Rede de computadores</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="el" name="interesses" value="EL">
+                <label for="el">Eletrônica</label>
+            </div>
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="dw" name="interesses" value="DW">
+                <label for="dw">Desenvolvimento para web</label>
+            </div>
+        </fieldset>
+
+        <!-- ===== BOTÕES ===== -->
+        <div class="form-buttons">
+            <!-- 
+                    type="submit": envia o form
+                    type="reset": limpa todos os campos
+                -->
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type="reset" class="btn btn-secondary">Limpar</button>
+        </div> 
+    </form>
+
+</div>
+<!-- 
+        ===== SCRIPT EXTERNO =====
+        Igual como você faz com CSS!
+        Coloca no final do body pra carregar depois do HTML
+        src: caminho pro arquivo JS
+    -->
+    <script src="js/validacao.js"></script>
+</body>
+</html>

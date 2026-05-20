@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex Box</title>
+    <link rel="stylesheet" href="css/flex.css">
+</head>
+<body>
+    <article class="container"><!-- <article> 
+     Tag semântica pra conteúdo independente e completo
+     Ex: post de blog, notícia, comentário, card de produto
+     Google entende que isso aqui faz sentido sozinho, fora do site
+-->
+        <section class="produto"><!-- <section>
+     Tag semântica pra agrupar conteúdo relacionado com um tema
+     Sempre deveria ter um título <h1> até <h6> dentro
+     Ex: seção "Sobre", "Serviços", "Depoimentos" de um site
+     Diferente do <article>: section é parte de algo maior, article é independente
+-->
+            <h1>Cimento Mauá CP-II</h1>
+            <img src="imagens_flex/cimento.jpg" alt="Saco cimento Mauá">
+                    <ul>
+                        <li>R$<b>25,00</b></li> <!-- <b> = deixa o texto em negrito
+     Uso visual apenas, sem importância semântica
+     Pra dar ênfase/destaque real use <strong>
+     Ex: nome de produto, palavra-chave, sem que seja "importante" -->
+                        <li>2x R$<b>12,50</b></li>
+                        <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Tijolo de Barro Simples</h1>
+            <img src="imagens_flex/tijolo.jpg" alt="Tijolo de barro">
+                    <ul>
+                        <li>R$<b>0,80</b></li>
+                          <li>1x R$<b>0,80</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Cal para pintura 8kg</h1>
+            <img src="imagens_flex/cal.jpg" alt="Saco de cal">
+                    <ul>
+                        <li>R$<b>6,00</b></li>
+                          <li>1x R$<b>6,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Azulejo 9,5x9, Portobello</h1>
+            <img src="imagens_flex/azulejo.jpg" alt="Painel de azulejos">
+                    <ul>
+                        <li>R$<b>50,00</b></li>
+                          <li>2x R$25,00</li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Porcelanato 59x59</h1>
+            <img src="imagens_flex/porcelanato.jpg" alt="Porcelanato">
+                    <ul>
+                        <li>R$<b>102,00</b></li>
+                          <li>3x R$<b>34,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Revestimento 43.7x63.1</h1>
+            <img src="imagens_flex/revestimento.jpg" alt="Painel de pastilhas">
+                    <ul>
+                        <li>R$<b>160,00</b></li>
+                          <li>4x R$<b>40,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Pendente Trieste</h1>
+            <img src="imagens_flex/pendente.jpg" alt="Luminária pendente">
+                    <ul>
+                        <li>R$<b>100,00</b></li>
+                          <li>4x R$<b>25,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Caixa d'água 100L</h1>
+            <img src="imagens_flex/caixa-dagua.jpg" alt="Caixa d'água">
+                    <ul>
+                        <li>R$<b>180,00</b></li>
+                          <li>5x R$<b>36,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Bomba pressurizadora</h1>
+            <img src="imagens_flex/bomba.jpg" alt="Bomba pressurizadora">
+                    <ul>
+                        <li>R$<b>980,00</b></li>
+                          <li>10x R$<b>98,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Carrinho de mão</h1>
+            <img src="imagens_flex/carrinho-mao.jpg" alt="Carrinho de mão">
+                    <ul>
+                        <li>R$<b>104,00</b></li>
+                          <li>4x R$<b>26,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Kit Ferramenta Bosch</h1>
+            <img src="imagens_flex/kit-bosh.jpg" alt="Caixa de Ferramentas">
+                    <ul>
+                        <li>R$<b>160,00</b></li>
+                          <li>5x R$<b>32,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        <section class="produto">
+            <h1>Boiler 100L</h1>
+            <img src="imagens_flex/boiler.jpg" alt="Boiler 100 litros">
+                    <ul>
+                        <li>R$<b>1.300,00</b></li>
+                          <li>10x R$<b>130,00</b></li>
+                          <li>cód 2912345</li>
+                    </ul>
+                    <button type="button">Mais...</button>
+        </section>
+
+        </article> <!-- /container --> 
+</body>
+</html>

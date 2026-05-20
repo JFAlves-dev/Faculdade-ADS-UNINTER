@@ -1,0 +1,188 @@
+/* ===== ESTRUTURA GERAL DO SITE ===== */
+body {
+    margin: 0; /* Tira a margem padrão que o navegador coloca */
+    min-height: 100vh; /* Altura mínima = 100% da altura da tela. vh = viewport height */
+    display: flex; /* Ativa o Flexbox - sistema de layout moderno */
+    flex-direction: column; /* Deixa os itens em coluna: card em cima, footer embaixo */
+    align-items: center; /* Centraliza tudo na horizontal */
+    justify-content: center; /* Centraliza tudo na vertical */
+
+/* ===== GRADIENTE ANIMADO DE FUNDO ===== */
+    background: linear-gradient(-45deg, #0d1117, #161b22, #1f6feb, #238636);
+    /* linear-gradient = transição suave entre cores */
+    /* -45deg = ângulo da direção do gradiente, diagonal */
+    /* Cores: preto GitHub, azul GitHub, verde Python */
+
+    background-size: 400% 400%; /* Faz o gradiente 4x maior que a tela */
+    /* Isso permite animar a posição dele sem ficar repetindo */
+
+    animation: gradient 12s ease infinite;
+    /* animation: nome duração tipo repetição */
+    /* gradient = nome da animação que criamos lá embaixo */
+    /* 12s = dura 12 segundos pra completar um ciclo */
+    /* ease = começa devagar, acelera, termina devagar */
+    /* infinite = repete pra sempre */
+
+    position: relative; /* Necessário pros ::before e ::after funcionarem */
+}
+
+/* ===== IMAGEM DE CÓDIGO POR CIMA DO GRADIENTE ===== */
+body::after {
+    content: ''; /* ::after precisa de content, mesmo vazio */
+    position: fixed; /* Fixa na tela, não rola junto com a página */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../imagens_web/bd.jpg);
+    background-size: cover; /* Cobre toda a tela sem distorcer */
+    background-position: center; /* Centraliza a imagem */
+    opacity: 0.15; /* 15% visível, 85% transparente. Deixa sutil */
+    z-index: 0; /* Camada 0 = fica atrás de tudo */
+}
+
+/* ===== ANIMAÇÃO DO GRADIENTE ===== */
+@keyframes gradient {
+    0% { background-position: 0% 50% } /* Começa na esquerda */
+    50% { background-position: 100% 50%; } /* Vai pra direita */
+    100% { background-position: 0% 50%; } /* Volta pra esquerda */
+    /* Isso cria o efeito do gradiente "andando" */
+}
+
+
+/* OVERLAY ESCURO PRA CONTRASTE */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 17, 23, 0.7); /* Cor do GitHub Dark */
+    /* rgba = red, green, blue, alpha/transparência */
+    /* 0.7 = 70% opaco, escurece o fundo pra ler o texto */
+}
+
+/* ===== CARD BRANCO CENTRAL ===== */
+.card {
+    position: relative; /* Pra ficar na frente dos ::before e ::after */
+    z-index: 1; /* Camada 1 = na frente do fundo que é camada 0 */
+    background: rgba(255, 255, 255, 0.95); /* Branco 95% opaco */
+    backdrop-filter: blur(12px); /* EFEITO VIDRO FOSCO - borra o que tá atrás */
+    -webkit-backdrop-filter: blur(12px); /* Versão pro Safari/iPhone */
+    display: flex; /* Flexbox dentro do card também */
+    flex-flow: row wrap; /* row = linha, wrap = quebra linha se precisar */
+    justify-content: center; /* Centraliza conteúdo dentro do card */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Borda branca transparente */
+    border-radius: 16px; 
+    padding: 32px; /* Espaçamento interno: 32px em todos os lados */
+    width: 100%;
+    max-width: 32rem; /* Mas no máximo 32rem. rem = relativo ao tamanho da fonte */
+    margin: 1rem; /* Margem externa pra não colar nas bordas da tela */
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4); 
+    /* Sombra: deslocamento-x, deslocamento-y, blur, cor */
+    /* 0 na horizontal, 8px pra baixo, 32px de blur, preto 40% transparente */
+
+    animation: fadeInup 0.8s ease; /* Animação de entrada quando carrega */
+}
+
+@keyframes fadeInup {
+    from {
+        opacity: 0; /* Começa invisível */
+        transform: translateY(30px); /* Começa 30px pra baixo */
+    }
+    to {
+        opacity: 1; /* Termina 100% visível */
+        transform: translateY(0); /* Termina na posição normal */
+    }
+    /* Efeito: card sobe e aparece suavemente */
+}
+
+h1 {
+    font-size: 28px;
+    margin: 0 0 16px 0; /* Margem: top 0, right 0, bottom 16px, left 0 */
+    width: 100%;
+    text-align: center; /* Ocupa linha toda pra centralizar direito */
+    color: #0d1117; /* Preto GitHub */
+}
+
+p {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 24px;
+    color: #333; /* Cinza escuro, não preto total */
+}
+
+a.estilo {
+    display: block; /* Vira bloco pra aceitar width 100% */
+    width: 100%; /* Ocupa toda largura do card */
+    margin: 8px 0; /* 8px em cima e embaixo, 0 nas laterais */
+    padding: 14px 24px; /* 14px vertical, 24px horizontal = botão gordinho */
+    background: linear-gradient(135deg, #1f6feb, #238636); 
+    /* Gradiente no botão: azul pra verde, diagonal 135deg */
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    text-align: center;
+    transition: all 0.3s ease;
+    /* Anima TODAS as mudanças em 0.3s de forma suave */
+    /* Isso faz o hover ficar liso, não brusco */
+    font-weight: 500; /* Peso da fonte: 500 = meio-negrito */
+}
+
+.estilo:link {color: #fff} /* Link nunca clicado = branco */
+.estilo:visited {color: #c9d1d9} /* Link já visitado = cinza claro */
+.estilo:hover {
+    color: #fff;
+    transform: translateY(-3px) scale(1.02);
+    /* translateY(-3px) = sobe 3px */
+    /* scale(1.02) = aumenta 2% de tamanho */
+    /* Efeito: botão "levanta" quando passa mouse */
+    box-shadow: 0 6px 20px rgba(31, 111, 235, 0.5);
+    /* Sombra azul quando hover = brilho */
+}
+.estilo:active {
+    transform: translateY(0px) scale(0.98);
+    /* Quando clica: volta pra baixo e diminui 2% */
+    /* Efeito: parece que afundou o botão */
+}
+
+footer {
+    position: relative;
+    z-index: 1; /* Pra ficar na frente do fundo */
+    margin-top: auto; /* Joga o footer pro final da página */
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #ffffff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+    /* Sombra preta forte no texto pra ler em qualquer fundo */
+}
+
+footer a {
+    color: #58a6ff; /* Azul claro do GitHub */
+    text-decoration: none;/* Sem sublinhado por padrão */
+    font-weight: 500; /* Meio negrito pra destacar */
+}
+
+footer a:hover {
+    text-decoration: underline; /*Sublinha quando passa o mouse*/
+    color: #79c0ff; /* Azul mais claro no hover */
+}
+
+footer small {
+    display: block;
+    margin-top: 8px;
+    font-size: 12px; /* Menor que o texto principal do footer */
+    opacity: 0.9; /* Quase opaco */
+}
+
+@media all and (min-width: 560px) {
+    .card {
+        max-width: 36rem; /* Card fica maior em telas grandes */
+        margin: 2rem; /* Mais margem também */
+    }
+    footer {
+        font-size: 16px; /* Footer maior no desktop */
+    }
+}
