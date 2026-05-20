@@ -181,7 +181,7 @@ footer small {
     .card {
         background: rgba(255, 255, 255, 0.85);
         margin: 1rem; /* Mais margem também */
-        width: calc(100% -2rem);
+        width: calc(100% - 2rem);
     }
     footer {
         font-size: 16px; /* Footer maior no desktop */
